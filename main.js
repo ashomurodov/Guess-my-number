@@ -15,15 +15,19 @@ let highscore = 0;
 
 let secretnumber = Math.trunc(Math.random() * 20) + 1;
 
+const messageDisplay = (message) => {
+  messageForGamer.textContent = message;
+};
+
 // ^ GAME LOGIC FUNCTION;
 const checkBtnListener = () => {
   let inputedvalue = inputedValue.value;
 
   // * if gamer find secret number
-  if (inputedvalue !== 0) {
+  if (inputedvalue > 0) {
     if (inputedvalue == secretnumber && score > 1) {
       secretNumber.textContent = secretnumber;
-      messageForGamer.textContent = "Correct!";
+      messageDisplay("Correct!");
       bodyContent.style.backgroundColor = "#60b347";
       secretNumber.style.width = "30rem";
       if (score > highscore) {
@@ -32,27 +36,27 @@ const checkBtnListener = () => {
       }
     }
     // ! IF GAMER CANT FIND SECRET NUMBER
-    else if (inputedvalue < secretnumber && score > 1) {
-      messageForGamer.textContent = "Up the number ⬆️";
-      score--;
-      scoreGamer.textContent = score;
-    } else if (inputedvalue > secretnumber && score > 1) {
-      messageForGamer.textContent = "Down the number ⬇️";
+    else if (score > 1) {
+      inputedvalue < secretnumber
+        ? messageDisplay("Up the number ⬆️")
+        : messageDisplay("Down the number ⬇️");
       score--;
       scoreGamer.textContent = score;
     } else {
-      messageForGamer.textContent = `You lost the game. Loser! 😒 Correct answer: ${secretnumber}`;
+      messageDisplay(
+        `You lost the game. Loser! 😒 Correct answer: ${secretnumber}`
+      );
       scoreGamer.textContent = 0;
     }
   } else {
-    messageForGamer.textContent = "😡This is not a number😡";
+    messageDisplay("😡This is not a number😡");
   }
 };
 
 // & AGAIN BUTTON LOGIC;
 const againBtnListener = () => {
   secretNumber.textContent = "?";
-  messageForGamer.textContent = "Start guessing...";
+  messageDisplay("Start guessing...");
   bodyContent.style.backgroundColor = "#222";
   secretNumber.style.width = "15rem";
   inputedValue.value = "";
