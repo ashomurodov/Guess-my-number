@@ -20,28 +20,32 @@ const checkBtnListener = () => {
   let inputedvalue = inputedValue.value;
 
   // * if gamer find secret number
-  if (inputedvalue == secretnumber && score > 1) {
-    secretNumber.textContent = secretnumber;
-    messageForGamer.textContent = "Correct!";
-    bodyContent.style.backgroundColor = "#60b347";
-    secretNumber.style.width = "30rem";
-    if (score > highscore) {
-      highscore = score;
-      highscoreGamer.textContent = highscore;
+  if (inputedvalue !== 0) {
+    if (inputedvalue == secretnumber && score > 1) {
+      secretNumber.textContent = secretnumber;
+      messageForGamer.textContent = "Correct!";
+      bodyContent.style.backgroundColor = "#60b347";
+      secretNumber.style.width = "30rem";
+      if (score > highscore) {
+        highscore = score;
+        highscoreGamer.textContent = highscore;
+      }
     }
-  }
-  // ! IF GAMER CANT FIND SECRET NUMBER
-  else if (inputedvalue < secretnumber && score > 1) {
-    messageForGamer.textContent = "Up the number ⬆️";
-    score--;
-    scoreGamer.textContent = score;
-  } else if (inputedvalue > secretnumber && score > 1) {
-    messageForGamer.textContent = "Down the number ⬇️";
-    score--;
-    scoreGamer.textContent = score;
+    // ! IF GAMER CANT FIND SECRET NUMBER
+    else if (inputedvalue < secretnumber && score > 1) {
+      messageForGamer.textContent = "Up the number ⬆️";
+      score--;
+      scoreGamer.textContent = score;
+    } else if (inputedvalue > secretnumber && score > 1) {
+      messageForGamer.textContent = "Down the number ⬇️";
+      score--;
+      scoreGamer.textContent = score;
+    } else {
+      messageForGamer.textContent = `You lost the game. Loser! 😒 Correct answer: ${secretnumber}`;
+      scoreGamer.textContent = 0;
+    }
   } else {
-    messageForGamer.textContent = `You lost the game. Loser! 😒 Correct answer: ${secretnumber}`;
-    scoreGamer.textContent = 0;
+    messageForGamer.textContent = "😡This is not a number😡";
   }
 };
 
