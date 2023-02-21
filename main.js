@@ -14,7 +14,6 @@ let score = 20;
 let highscore = 0;
 
 let secretnumber = Math.trunc(Math.random() * 20) + 1;
-console.log(secretnumber);
 
 // ^ GAME LOGIC FUNCTION;
 const checkBtnListener = () => {
@@ -56,7 +55,6 @@ const againBtnListener = () => {
   scoreGamer.textContent = 20;
   score = 20;
   secretnumber = Math.trunc(Math.random() * 20) + 1;
-  console.log(secretnumber);
 };
 
 checkBtn.addEventListener("click", checkBtnListener);
