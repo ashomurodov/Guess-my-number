@@ -1,3 +1,3 @@
 # Guess-my-number
 
-Website link -> 
+Website link -> https://ashomurodov.github.io/Guess-my-number/
